@@ -3,7 +3,7 @@
 A Python-based frontend dashboard for interactive chatbot analytics and visualizations.
 
 ---
-## 📁 Clone the Repository
+## 📁 Setup
 
 ```bash
 
