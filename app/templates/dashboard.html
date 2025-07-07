@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dark Dashboard</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #007963;
+      color: #fff;
+    }
+
+    .app-layout {
+      display: flex;
+      height: 100vh;
+      flex-direction: row;
+    }
+
+    .sidebar {
+      width: 240px;
+      background-color: #006655;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar h2 {
+      color: #fff;
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .nav-link {
+      color: #e0f2f1;
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .nav-link i {
+      margin-right: 12px;
+      font-size: 20px;
+    }
+
+    .nav-link:hover {
+      color: #00bfa5;
+    }
+
+    .content-wrapper {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .top-bar {
+      height: 50px;
+      background-color: #004d40;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .top-bar .help {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    .top-bar .user {
+      background-color: #6d4c41;
+      color: #fff;
+      font-weight: bold;
+      padding: 6px 10px;
+      border-radius: 50%;
+      font-size: 14px;
+      text-align: center;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .user {
+      background-color: #6b4c4c;
+      color: white;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .user-modal {
+      position: absolute;
+      right: 20px;
+      top: 60px;
+      background-color:  #00876d;
+      color: white;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1000;
+      width: 220px;
+    }
+
+    .user-modal.show {
+      display: flex;
+    }
+
+    .user-modal div {
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-modal div:hover {
+      background-color: #00a98f;
+    }
+
+
+    .main-content {
+      flex-grow: 1;
+      padding: 40px;
+      overflow-y: auto;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #00876d;
+      border: 1px solid #00a98f;
+      padding: 24px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .card .label {
+      background-color: #00bfa5;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      color: #fff;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+    }
+
+    .card small {
+      font-size: 12px;
+      color: #cceee8;
+    }
+
+    .card .buttons {
+      margin-top: 16px;
+    }
+
+    .card button {
+      background-color: #006655;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      margin-right: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .card button:hover {
+      background-color: #00a98f;
+    }
+
+    #add-database-section {
+      background-color: #006655;
+      padding: 30px;
+      border-radius: 12px;
+      margin-top: 40px;
+    }
+
+    .progress-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .progress-bar .dot {
+      width: 10px;
+      height: 10px;
+      background-color: #004d40;
+      border-radius: 50%;
+    }
+    .progress-bar .dot.active {
+      background-color: #00bfa5;
+    }
+
+    .db-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .db-tile {
+      background-color: #00876d;
+      color: #fff;
+      text-align: center;
+      padding: 20px 10px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px rgba(0, 191, 165, 0.2);
+    }
+    .db-tile:hover {
+      background-color: #00a98f;
+    }
+
+    .continue-btn {
+      background-color: #00bfa5;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .continue-btn:hover {
+      background-color: #00a58f;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <h2>⚙️ Configuration</h2>
+      <a href="#" class="nav-link"><i class='bx bx-database'></i> Databases</a>
+      <a href="#" class="nav-link"><i class='bx bx-sliders'></i> API Settings</a>
+      <a href="#" class="nav-link"><i class='bx bx-cog'></i> Settings</a>
+    </aside>
+
+    <!---<div class="content-wrapper">
+      <div class="top-bar">
+        <div class="help"><i class='bx bx-help-circle'></i> Help</div>
+        <div class="user" id="user-icon"></div>
+      </div>
+      <div class="content-wrapper">
+        <div class="top-bar">
+          <div class="help"><i class='bx bx-help-circle'></i> Help</div>
+          <div class="user" id="user-icon"></div>
+          <div class="user-modal" id="user-modal">
+            <div class="icon-hover" id="user-email">{{email}}</div>
+            <div class="icon-hover">Upgrade plan</div>
+            <div class="icon-hover">Personalize</div>
+            <div class="icon-hover">Settings</div>
+            <div class="icon-hover">Help</div>
+            <div class="icon-hover">Log out</div>
+          </div>
+        </div>--->
+
+        <div class="content-wrapper">
+            <div class="top-bar">
+              <div class="help"><i class='bx bx-help-circle'></i> Help</div>
+              <div class="user" id="user-icon"></div>
+              <div class="user-modal" id="user-modal">
+                <div><i class='bx bx-user'></i> <span id="user-email">{{email}}</span></div>
+                <div><i class='bx bx-up-arrow-circle'></i> Upgrade plan</div>
+                <div><i class='bx bx-paint'></i> Personalize</div>
+                <div><i class='bx bx-cog'></i> Settings</div>
+                <div><i class='bx bx-help-circle'></i> Help</div>
+                <div><i class='bx bx-log-out'></i> Log out</div>
+              </div>
+            </div>
+
+
+
+
+      <main class="main-content">
+        <div class="cards-grid">
+          <div class="card">
+            <div class="label">🟢 Demo</div>
+            <h3>Demo Ecommerce DB</h3>
+            <small><i class='bx bxl-postgresql'></i> PostgreSQL</small><br>
+            <small>Created: Jun 18, 2025</small>
+            <div class="buttons">
+              <button>Edit</button>
+              <button>Chat</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="add-database-section">
+          <h2 style="color: #ffffff; margin-bottom: 20px;">Add your database</h2>
+          <div class="progress-bar">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <h3 style="margin: 20px 0; color: #ccf2e4;">Select your database type</h3>
+          <div class="db-grid">
+            <div class="db-tile">MySQL</div>
+            <div class="db-tile">Microsoft SQL Server</div>
+            <div class="db-tile">PostgreSQL</div>
+            <div class="db-tile">Oracle PL/SQL</div>
+            <div class="db-tile">SQLite</div>
+            <div class="db-tile">Snowflake</div>
+            <div class="db-tile">Redshift</div>
+            <div class="db-tile">BigQuery</div>
+            <div class="db-tile">MariaDB</div>
+            <div class="db-tile">MongoDB</div>
+            <div class="db-tile">ClickHouse</div>
+            <div class="db-tile">Other Database</div>
+          </div>
+          <button class="continue-btn">Continue →</button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const email = "{{ email }}";
+      const userIcon = document.getElementById("user-icon");
+      const userModal = document.getElementById("user-modal");
+      const userEmail = document.getElementById("user-email");
+      if (email && typeof email === "string") {
+        userIcon.textContent = email.charAt(0).toUpperCase();
+      }
+
+      userIcon.addEventListener("click", () => {
+        userModal.classList.toggle("show");
+      });
+
+    });
+  </script>
+ 
+</body>
+</html>

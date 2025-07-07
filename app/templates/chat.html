@@ -1,0 +1,63 @@
+{% extends "dashboard_base.html" %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+{% endblock %}
+
+
+
+{% block content %}
+<div class="chat-container">
+    <!-- Sidebar -->
+    <div id="chat-sidebar">
+      <h3>Select a Model</h3>
+      <select id="model-select">
+        <option data-popup="true">GPT-4.1</option>
+        <option data-popup="true">Grok 3</option>
+        <option data-popup="true">Claude Sonnet 4</option>
+        <option data-popup="true">DeepSeek R1 0528</option>
+        <option selected>Gemini 2.0 Flash</option>
+      </select>
+      
+      <h4>Tables</h4>
+      <div class="select-all-container">
+        <input type="checkbox" id="select-all-tables" onchange="toggleAllTables(this)" checked>
+        <label for="select-all-tables">Select All Tables</label>
+      </div>
+      
+      <input type="text" id="search-input" placeholder="Search tables..." onkeyup="filterTables(this.value)">
+      
+      <div class="tree-container">
+        <ul class="tree" id="treeContainer">
+          <!-- Tree will be populated here -->
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- Chat Panel -->
+    <div id="chat-panel">
+      
+      <div id="chat-messages">
+      </div>
+      <div id="chat-input-container">
+        <input type="text" id="chat-input" placeholder="Type your question...">
+      </div>
+    </div>
+
+
+
+
+</div>
+  
+
+{% endblock %}
+
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/chat/chat_sidebar.js') }}"></script>
+<script src="{{ url_for('static', filename='js/chat/chat_div.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script> 
+
+
+{% endblock %}

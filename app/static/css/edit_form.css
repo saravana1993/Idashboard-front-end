@@ -1,0 +1,73 @@
+
+#edit-modal .modal-dialog {
+    max-width: none; /* Remove max-width constraint */
+    width: auto; /* Set width to auto */
+  }
+  
+  #edit-modal .edit-modal-content {
+    width: fit-content; /* Fit content width */
+    height: fit-content; /* Fit content height */
+    margin: auto; /* Center the modal */
+    width: 45%;
+    
+  }
+  #edit-modal .modal-body {
+    padding: 0px; /* Remove padding */
+  }
+
+/* Reset some default styles */
+
+#add-database-connection-section {
+  background: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(10, 10, 10, 0.9));
+  padding: 30px;
+  border-radius: 12px;
+  position: relative;
+  top: 100px; /* Move the div down by 150px */
+  margin-left: 0px;
+  margin-right: 0px;
+  border: 1px solid #ddd;
+  }
+
+.add-database-connection-section::before{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+  border-radius: 16px 16px 0 0;
+  pointer-events: none;
+}
+
+.see-faq {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.connection-form form {
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.connection-form label {
+  display: block;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.connection-form input[type="text"], input[type="email"], input[type="password"], input[type="number"]{
+  width: 50%;
+  height: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+

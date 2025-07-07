@@ -1,0 +1,38 @@
+{% extends "dashboard_base.html" %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/db_selector.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<main class="main-content">
+<div id="add-database-section">
+    <h2 style="color: #ffffff; margin-bottom: 20px;">Add your database</h2>
+    <div class="progress-bar">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+     
+    
+    </div>
+    <h3 style="margin: 20px 0; color: #ffffff;">Select your database type</h3>
+    <div class="db-grid">
+        <div class="db-tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />MySQL</div>
+        <div class="db-tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" />PostgreSQL</div>
+        <div class="db-tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="MSSQL" />Microsoft SQL Server</div>
+        <div class="db-tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle" />Oracle PL/SQL</div>
+        <div class="db-tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" alt="SQLite" />SQLite</div>
+        <div class="db-tile"><i class="ti ti-snowflake"></i>Snowflake</div>
+        <div class="db-tile"><i class="ti ti-brand-google-big-query"></i>BigQuery</div>
+        <div class="db-tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mariadb/mariadb-original.svg" alt="MariaDB" />MariaDB</div>
+        <div class="db-tile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />MongoDB</div>
+        <div class="db-tile"><i class='bx bx-layer'></i> Other Database</div>
+      </div>
+      
+      <div class="button-group">
+        <button class="exit-btn">Exit</button>
+        <button id="db-continue-button" class="continue-btn">Continue →</button>
+      </div>
+  </div>
+</main>
+{% endblock %}
+
+

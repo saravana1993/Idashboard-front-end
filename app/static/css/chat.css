@@ -1,0 +1,388 @@
+
+.chat-container {
+  height: 100dvh;
+  display: flex;
+  padding: 0.5rem;
+  gap: 1rem;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(10, 10, 10, 0.9));
+}
+
+.chat-container::before{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+  border-radius: 16px 16px 0 0;
+  pointer-events: none;
+}
+#chat-sidebar {
+margin-top: 0px;
+width: 300px;
+background-color: #242121;
+font-family: 'Poppins', sans-serif;
+color: white;
+padding: 1rem;
+border-radius: 10px;
+display: flex;
+flex-direction: column;
+height: calc(100vh - 5rem); /* Set the height to the viewport height minus padding */
+box-sizing: border-box; /* Include padding in the height calculation */
+}
+
+#chat-sidebar select,
+#chat-sidebar input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+#chat-sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#chat-sidebar li ul {
+  padding-left: 1rem;
+}
+
+.arrow {
+  font-size: 16px;
+  margin-right: 5px;
+  vertical-align: middle;
+  cursor: pointer;
+  display: inline-block;
+  width: 20px;
+  transition: transform 0.2s;
+}
+
+.arrow.expanded {
+  transform: rotate(90deg);
+}
+
+/* Tree structure styles */
+.tree-container {
+  margin-top: 1rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.tree {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tree-item {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.tree-item::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: -10px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.tree-item:last-child::before {
+  bottom: 20px;
+}
+
+.tree-item::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 20px;
+  width: 15px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.tree-item.root::before,
+.tree-item.root::after {
+  display: none;
+}
+
+.tree-content {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.tree-content:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.tree-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  user-select: none;
+}
+
+.tree-icon.expandable {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tree-icon.expanded::before {
+  content: '▼';
+}
+
+.tree-icon.collapsed::before {
+  content: '▶';
+}
+
+.tree-icon.folder::before {
+  content: '📁';
+}
+
+.tree-icon.table::before {
+  content: '📊';
+}
+
+.tree-icon.column::before {
+  content: '📝';
+}
+
+.tree-label {
+  font-size: 14px;
+  color: white;
+  flex-grow: 1;
+}
+
+.tree-type {
+  font-size: 11px;
+  color: #b2dfdb;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 8px;
+}
+
+.tree-children {
+  list-style: none;
+  margin: 0;
+  padding-left: 25px;
+}
+
+.tree-children.hidden {
+  display: none;
+}
+
+.table-checkbox {
+  position: absolute;
+  left: -15px;
+  margin: 0;
+}
+
+#chat-panel {
+flex: 1;
+background: linear-gradient(145deg, rgba(51, 51, 51, 0.9), rgba(39, 39, 39, 0.9));
+color: #ffffff;
+padding: .5rem;
+border-radius: 40px;
+display: flex;
+flex-direction: column;
+height: calc(100dvh - 5rem); /* Set the height to the viewport height minus padding */
+box-sizing: border-box; /* Include padding in the height calculation */
+}
+
+#chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #ffffff;
+  padding: .1rem;
+  border-radius: 35px;
+  margin-bottom: .5rem;
+ 
+  border-color: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(10, 10, 10, 0.9));
+
+}
+
+#chat-input {
+  width: 75%;
+  padding: 1rem;
+  border-radius: 25px;
+  border: none;
+  box-sizing: border-box;
+  margin-left: 13%;
+  border-style: solid;
+  border-color: #6c757d;
+}
+
+
+#chat-messages {
+  padding: 10px;
+}
+
+.message {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.user-icon, .ai-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.user-icon {
+  background-color: #6c757d;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.ai-icon {
+  background-color: #6c757d;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.message-text {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #000;
+  word-wrap: break-word;
+  max-width: 500px; /* adjust this value to fit your needs */
+}
+
+.user-message .message-text {
+  background-color: #000000;
+  margin-right: 0;
+}
+
+.ai-message .message-text {
+  background-color: #000000;
+  margin-left: 0;
+}
+
+.user-message {
+  justify-content: flex-end;
+}
+
+.ai-message {
+  justify-content: flex-start;
+}
+.chart-container {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-left: 40px;
+}
+
+.select-all-container {
+  margin-bottom: 1rem;
+}
+
+.select-all-container input {
+  margin-right: 8px;
+}
+
+.typing-indicator {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  color: #212222;
+  font-style: italic;
+  margin-left: 52px;
+  margin-bottom: 52px;
+}
+
+.typing-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  background: #6b7280;
+  border-radius: 50%;
+  animation: typingDot 1.5s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingDot {
+  0%, 60%, 100% {
+      opacity: 0.3;
+      transform: translateY(0);
+  }
+  30% {
+      opacity: 1;
+      transform: translateY(-10px);
+  }
+}
+
+
+.chart-wrapper {
+  display: flex;
+}
+
+.chart-container {
+  width: 50%;
+}
+
+.icon-container {
+  margin-left: 10px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.expanded-view-options {
+  position: relative;
+  left: 600px;
+  margin-top: -375px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 110px;
+}
+
+.option-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.option-btn:hover {
+  background-color: #f0f0f0;
+}

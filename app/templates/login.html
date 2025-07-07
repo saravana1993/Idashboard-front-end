@@ -1,0 +1,72 @@
+<!--- <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Login</button>
+    </form>
+    <a href="{{ url_for('main.home') }}">Back to Home</a>
+</body>
+</html> --->
+
+
+<!DOCTYPE html>
+<!---Coding By CoderGirl | www.codinglabweb.com--->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GETO</title>
+  <link rel="icon" href="/static/src/logo/favicon.ico" type="image/png">
+  <!---Custom CSS File--->
+  <link rel="stylesheet" href="static/css/style.css">
+  <script src="{{ url_for('static', filename='js/login.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/background_js_file.js') }}" defer></script>
+
+</head>
+<body>
+ 
+   
+      <!--- <ul>
+      <li class="logo"> 
+          <img src="/static/src/logo/logo-dark.png" alt="Logo">
+        </li> 
+        <li class="topnav-right"><a href="#about">About</a></li> 
+        <li class="topnav-right"><a href="#news">News</a></li>
+        <li class="topnav-right"><a href="#contact">Contact</a></li>
+        <li class="topnav-right"><a href="#pricing">Pricing</a></li>
+      </ul> --->
+ 
+
+  <div class="container">
+    <div class="login form">
+      <header>
+        <img src="/static/src/logo/logo.png" alt="Login Logo">
+      </header>
+      <form id="login-form" method="post">
+        <label>Email</label>
+        <input type="text" name="email" id="email" placeholder="Enter your email" required>
+        <label>Password</label>
+        <input type="password" name="password" id="password" placeholder="Enter your password" required>
+        <a href="#">Forgot password?</a>
+        <input type="submit" id="login-button" class="button" value="Sign in">
+      </form>
+      <div class="signup">
+        <span class="signup">Don't have an account?
+            <a href="/register">Sign up</a>
+        </span>
+      </div>
+    </div>
+    
+  </div>
+</body>
+</html>

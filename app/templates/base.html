@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Home</title>
+  <!---Custom CSS File--->
+  <link rel="stylesheet" href="static/css/style.css">
+  <script src="{{ url_for('static', filename='js/login.js') }}" defer></script>
+</head>
+<body>
+    
+    <ul >
+        <div class="topnav-right">
+        <li><a href="#about">About</a></li> 
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        </div> 
+      </ul>
+
+      <div class="container">
+        <div class="login form">
+          <header>Login</header>
+          <form id="login-form" method="post">
+            <input type="text" name="email" id="email" placeholder="Enter your email" required>
+            <input type="password" name="password" id="password" placeholder="Enter your password" required>
+            <a href="#">Forgot password?</a>
+            <input type="submit" id="login-button" class="button" value="Login">
+          </form>
+          <div class="signup">
+            <span class="signup">Don't have an account?
+                <a href="/register">Signup</a>
+            </span>
+          </div>
+        </div>
+        
+      </div>
+</body>
+</html>
