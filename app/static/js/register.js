@@ -103,3 +103,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
+  document.querySelectorAll('.password-toggle').forEach(toggle => {
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      const input = this.nextElementSibling;
+      const icons = this.querySelectorAll('em');
+      if (input.type === "password") {
+        input.type = "text";
+        icons[0].style.display = "none"; // hide eye
+        icons[1].style.display = "inline"; // show eye-off
+      } else {
+        input.type = "password";
+        icons[0].style.display = "inline"; // show eye
+        icons[1].style.display = "none"; // hide eye-off
+      }
+    });
+  });
