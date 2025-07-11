@@ -143,3 +143,15 @@ def add_database():
 def logout():
     logout_user()
     return redirect("/login")
+
+
+@main.route('/connections/<int:connection_id>/post', methods=['POST'])
+def connect_connection(connection_id):
+    return jsonify({'success': True})
+  
+@main.route('/connections/<int:connection_id>/delete', methods=['DELETE'])
+def disconnect_connection(connection_id):
+    
+    return jsonify({'success': True})
+   
+
