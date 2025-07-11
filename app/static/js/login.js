@@ -79,3 +79,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
   
+   function togglePassword(event) {
+    event.preventDefault(); // prevent the default anchor behavior
+
+    const toggle = event.currentTarget;
+    const passwordInput = document.getElementById('password');
+    const iconOn = toggle.querySelector('.on');
+    const iconOff = toggle.querySelector('.off');
+
+    const isPasswordVisible = passwordInput.type === 'text';
+
+    passwordInput.type = isPasswordVisible ? 'password' : 'text';
+
+    // Toggle icons
+    if (isPasswordVisible) {
+      iconOn.classList.remove('d-none');
+      iconOff.classList.add('d-none');
+    } else {
+      iconOn.classList.add('d-none');
+      iconOff.classList.remove('d-none');
+    }
+  }

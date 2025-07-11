@@ -135,11 +135,11 @@
   --bs-tertiary-bg: #f8f9fa;
   --bs-tertiary-bg-rgb: 248, 249, 250;
   --bs-heading-color: #293a51;
-  --bs-link-color: #3f3eed;
-  --bs-link-color-rgb: 63, 62, 237;
+  --bs-link-color: #000;
+  --bs-link-color-rgb: #fff;
   --bs-link-decoration: underline;
-  --bs-link-hover-color: #3232be;
-  --bs-link-hover-color-rgb: 50, 50, 190;
+  --bs-link-hover-color: #fff;
+  --bs-link-hover-color-rgb: #fff;
   --bs-code-color: #d63384;
   --bs-highlight-bg: #fff3cd;
   --bs-border-width: 1px;
